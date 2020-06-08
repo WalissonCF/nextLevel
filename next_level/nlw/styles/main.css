@@ -1,0 +1,70 @@
+/* References the project root */
+:root {
+    --tile-color: #322153;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: #f0f0f5;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--tile-color);
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* BOX MODEL */
+#page-home {
+    /* vh will occupy the whole page, 
+    that is, if it has 100px it will occupucy
+    the 100px */
+    height: 100vh;
+    background: url('../assets/home-background.svg') no-repeat;
+    background-position: 35vw bottom;
+}
+
+#page-home .content {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#page-home header {
+    margin-top: 48px;
+    /* Left the elements 
+    next to each other */
+    display: flex;
+    align-items: center;
+    /* Put a space between them */
+    justify-content: space-between;
+}
+
+#page-home header a {
+    display: flex;
+    color: var(--tile-color);
+    font-weight: 700;
+}
+
+#page-home header a span {
+    margin-right: 16px;
+    display: flex;
+    background-image: url('../assets/log-in.svg');
+    width: 20px;
+    height: 20px;
+}
+
+#page-home main {
+    max-width: 560px;
+}
+
+#page-home main h1 {
+    font-size: 54px;
+    color: var(--tile-color);
+}
