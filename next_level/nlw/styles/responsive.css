@@ -1,0 +1,54 @@
+/* @media will control the post of the page
+    That would be like a "responsive" page
+
+    The backgroud position is used to prevent
+    texts from crashing during the responsive,
+    so we use max-width and min-width to see
+    that happens to avoid.
+    */
+@media (max-width: 900px) {
+    #page-home {
+        /* This will make the image disappear
+         when the screen gets smaller 
+        */
+        background-position-x: 70vw;
+    }
+
+    #page-home .content {
+        align-items: center;
+        text-align: center;
+    }
+
+    #page-home header a {
+        position: absolute;
+        bottom: 48px;
+        left: 50%;
+        /* Transform will ignore the size and
+        find the average page and put it there,
+        in X
+        */
+        transform: translateX(-50%);
+    }
+
+    #page-home main {
+        align-items: center;
+    }
+}
+
+@media (min-width: 1700px) {
+    #page-home {
+        /* This will make the image disappear
+        when the screen gets smaller
+        */
+        background-position-x: 40vw;
+    }
+}
+
+@media (max-width: 760px) {
+    #page-home {
+        /* This will make the image disappear
+        when the screen gets smaller
+        */
+        background-position-y: 200px;
+    }
+}
