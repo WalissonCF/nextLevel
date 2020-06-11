@@ -1,0 +1,39 @@
+#page-create-point {
+    width: 90%;
+    max-width: 1100px;
+    /* 
+        Margin = 0 will make it below and
+        above 0 an margin auto will make 
+        the sides automatic
+    */
+    margin: 0 auto;
+}
+
+#page-create-point header {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#page-create-point header a {
+    /* 
+        --tile-color comes from the main
+    */
+    color: var(--title-color);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+#page-create-point header a span {
+    margin-right: 16px;
+    background-image: url('../assets/arrow-left.svg');
+    /* 
+        Background image must have a width,
+        height and display flex
+    */
+    display: flex;
+    width: 20px;
+    height: 24px;
+}
