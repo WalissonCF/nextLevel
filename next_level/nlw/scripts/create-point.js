@@ -39,11 +39,14 @@ function getCities(event) {
     // the cities according to the chosen state
     const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`
 
+    citySelect.innerHTML = "<option value>Select the city</option>"
+    citySelect.disabled = true
+
     fetch(url)
     .then( res => res.json() )
     .then( cities => {
         for( const city of cities) {
-            citySelect.innerHTML += `<option value="${city.id}">${city.nome}</option>`
+            citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
         }
 
         // Activating the select which is "disabled"
@@ -72,3 +75,21 @@ document
 //         console.log("Mudei")
 //     } )
 
+// Collection items
+// Catching all li's
+const itemsToCollect = document.querySelectorAll(".items-grid li")
+
+// For each of them you will do this
+for (const item of itemsToCollect) {
+    item.addEventListener("click", handleSelectedItem)
+}
+
+function handleSelectedItem(event) {
+    const itemLi = event.target
+    // Adding a class to the tag
+    // (Adding or removing a class with javascript)
+    itemLi.classList.toggle("Selected")
+
+    const itemId = itemLi.dataset.id 
+    // 32:32
+}
