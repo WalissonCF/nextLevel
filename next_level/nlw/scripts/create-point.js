@@ -84,12 +84,30 @@ for (const item of itemsToCollect) {
     item.addEventListener("click", handleSelectedItem)
 }
 
+// Here will be the selected items
+let selectedItems = [1, 2, 3, 4, 5, 6]
+
 function handleSelectedItem(event) {
     const itemLi = event.target
     // Adding a class to the tag
     // (Adding or removing a class with javascript)
-    itemLi.classList.toggle("Selected")
+    itemLi.classList.toggle("selected")
 
-    const itemId = itemLi.dataset.id 
-    // 32:32
+    const itemId = itemLi.dataset.id
+
+    // Checking if there are selected items, and if they have
+    // selected pick up the items
+    const alreadySelected = selectedItems.findIndex( function(item) {
+        const itemFound = item == itemId
+        return itemFound
+    })
+
+
+    // If it is selected, uncheck
+
+
+    // If not selected, add the selection
+
+
+    // Updating the hidden field(input type="hidden") with the data
 }
