@@ -84,8 +84,11 @@ for (const item of itemsToCollect) {
     item.addEventListener("click", handleSelectedItem)
 }
 
+// Updating the hidden field(input type="hidden") with the data
+const collectedItems = document.querySelector("input[name=items]")
+
 // Here will be the selected items
-let selectedItems = [1, 2, 3, 4, 5, 6]
+let selectedItems = []
 
 function handleSelectedItem(event) {
     const itemLi = event.target
@@ -97,17 +100,26 @@ function handleSelectedItem(event) {
 
     // Checking if there are selected items, and if they have
     // selected pick up the items
-    const alreadySelected = selectedItems.findIndex( function(item) {
-        const itemFound = item == itemId
+    const alreadySelected = selectedItems.findIndex( item => {
+        const itemFound = item == itemId // This is true or false
         return itemFound
     })
 
 
     // If it is selected, uncheck
+    if( alreadySelected >= 0 ) {
+        const filteredItems = selectedItems.filter( item => {
+            const itemDifferent = item != itemId
+            return itemDifferent
+        })
+        selectedItems = filteredItems
+    } else {
+        // If not selected, add the selection
+        // Push I put the element inside the array   
+        selectedItems.push(itemId)
+    }
 
+    // Updating the hidden field(input type="hidden") with the data    
+    collectedItems.value = selectedItems
 
-    // If not selected, add the selection
-
-
-    // Updating the hidden field(input type="hidden") with the data
 }
