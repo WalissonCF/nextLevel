@@ -39,11 +39,14 @@ function getCities(event) {
     // the cities according to the chosen state
     const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`
 
+    citySelect.innerHTML = "<option value>Select the city</option>"
+    citySelect.disabled = true
+
     fetch(url)
     .then( res => res.json() )
     .then( cities => {
         for( const city of cities) {
-            citySelect.innerHTML += `<option value="${city.id}">${city.nome}</option>`
+            citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
         }
 
         // Activating the select which is "disabled"
@@ -72,3 +75,51 @@ document
 //         console.log("Mudei")
 //     } )
 
+// Collection items
+// Catching all li's
+const itemsToCollect = document.querySelectorAll(".items-grid li")
+
+// For each of them you will do this
+for (const item of itemsToCollect) {
+    item.addEventListener("click", handleSelectedItem)
+}
+
+// Updating the hidden field(input type="hidden") with the data
+const collectedItems = document.querySelector("input[name=items]")
+
+// Here will be the selected items
+let selectedItems = []
+
+function handleSelectedItem(event) {
+    const itemLi = event.target
+    // Adding a class to the tag
+    // (Adding or removing a class with javascript)
+    itemLi.classList.toggle("selected")
+
+    const itemId = itemLi.dataset.id
+
+    // Checking if there are selected items, and if they have
+    // selected pick up the items
+    const alreadySelected = selectedItems.findIndex( item => {
+        const itemFound = item == itemId // This is true or false
+        return itemFound
+    })
+
+
+    // If it is selected, uncheck
+    if( alreadySelected >= 0 ) {
+        const filteredItems = selectedItems.filter( item => {
+            const itemDifferent = item != itemId
+            return itemDifferent
+        })
+        selectedItems = filteredItems
+    } else {
+        // If not selected, add the selection
+        // Push I put the element inside the array   
+        selectedItems.push(itemId)
+    }
+
+    // Updating the hidden field(input type="hidden") with the data    
+    collectedItems.value = selectedItems
+
+}
