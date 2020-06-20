@@ -14,34 +14,36 @@
 {% block content %}
     {% include "partials/page-header.html" %}
     <main>
-        <h4>
-            <strong>2 points</strong>
-            found
-        </h4>
-        <div class="cards">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1528323273322-d81458248d40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=801&q=80" alt="Tax collector">
-                <h1>Tax collector</h1>
-                <h3>Electronic waste, lampandas</h3>
-                <p>
-                    Rio do Sul, Santa Catarina
-                    <br/>
-                    Guilherme Gemballa, Jardmin América
-                    <br/>
-                    Número 260
-                </p>
+
+        {% if total > 0 %}
+            <h4>
+                <strong>{{ total }}
+                    points</strong>
+                found
+            </h4>
+            <div class="cards">
+
+                {% for place in places %}
+                    <div class="card">
+                        <img src="{{ place.image }}" alt="{{ place.name }}">
+                        <h1>{{ place.name }}</h1>
+                        <h3>{{ place.items }}</h3>
+                        <p>
+                            {{ place.city }},
+                            {{ place.state }}
+                            <br/>
+                            {{ place.address }}
+                            <br/>
+                            {{ place.address2 }}
+                        </p>
+                    </div>
+                {% endfor %}
+
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1507560461415-997cd00bfd45?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="Papersider">
-                <h1>Papersider</h1>
-                <h3>Papers and cardboard</h3>
-                <p>
-                    Rio do Sul, Santa Catarina
-                    <br/>
-                    Guilherme Gemballa, Jardmin América
-                    <br/>
-                    Número 260
-                </p>
-            </div>
-        </main>
+
+        {% else %}    
+            <h4><strong>No</strong> location found</h4>
+        {% endif %}
+
+    </main>
 {% endblock content %}

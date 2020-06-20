@@ -9,11 +9,12 @@
 
 {% block styles %}
     <link rel="stylesheet" href="/styles/create-point.css">
+    <link rel="stylesheet" href="/styles/modal.css">
 {% endblock styles %}
 
 {% block content %}
     {% include "partials/page-header.html" %}
-    <form action="">
+    <form action="/savepoint" method="POST">
         <h1>Collection point register</h1>
         <fieldset>
             <legend>
@@ -29,10 +30,7 @@
                     <input type="url" name="image" placeholder="http://" required="required">
                 </div>
             </div>
-            <div class="field">
-                <label for="name">Entity name</label>
-                <input type="text" name="name" required="required">
-            </div>
+   
             <div class="field-group">
                 <div class="field">
                     <label for="address">Address</label>
@@ -65,27 +63,27 @@
                 <span>Select one or more items below</span>
             </legend>
             <div class="items-grid">
-                <li data-id="1">
+                <li data-id="Lamps">
                     <img src="/assets/lampadas.svg" alt="Lamps">
                     <span>Lamps</span>
                 </li>
-                <li data-id="2">
+                <li data-id="Batteries">
                     <img src="/assets/baterias.svg" alt="Batteries">
                     <span>Batteries</span>
                 </li>
-                <li data-id="3">
+                <li data-id="Papers and cardboard">
                     <img src="/assets/papeis-papelao.svg" alt="Papers and cardboard">
                     <span>Papers and cardboard</span>
                 </li>
-                <li data-id="4">
+                <li data-id="Electronic waste">
                     <img src="/assets/eletronicos.svg" alt="Electronic waste">
                     <span>Electronic waste</span>
                 </li>
-                <li data-id="5">
+                <li data-id="Organic waste">
                     <img src="/assets/organicos.svg" alt="Organic waste">
                     <span>Organic waste</span>
                 </li>
-                <li data-id="6">
+                <li data-id="Kitchen oil">
                     <img src="/assets/oleo.svg" alt="Kitchen oil">
                     <span>Kitchen oil</span>
                 </li>
@@ -95,7 +93,16 @@
         </fieldset>
         <button type="submit">Register collection point</button>
     </form>
+
+    
+
 {% endblock content %}}
+
+{% block modal %}
+    {% if saved %}
+        {% include "partials/point-created.html" %}}
+    {% endif %}
+{% endblock modal %}
 
 {% block scripts %}
     <script src="/scripts/create-point.js"></script>

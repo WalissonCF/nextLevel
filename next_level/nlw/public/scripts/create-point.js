@@ -98,6 +98,8 @@ function handleSelectedItem(event) {
 
     const itemId = itemLi.dataset.id
 
+    // console.log('ITEM ID: ', itemId)
+
     // Checking if there are selected items, and if they have
     // selected pick up the items
     const alreadySelected = selectedItems.findIndex( item => {
@@ -118,6 +120,8 @@ function handleSelectedItem(event) {
         // Push I put the element inside the array   
         selectedItems.push(itemId)
     }
+
+    // console.log('selectedItems: ', selectedItems)
 
     // Updating the hidden field(input type="hidden") with the data    
     collectedItems.value = selectedItems
