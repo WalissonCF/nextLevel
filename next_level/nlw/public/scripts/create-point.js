@@ -8,7 +8,7 @@ function populateUFs() {
     // Fetch is a promise
     // Here I turn the answer into a .json that is passed
     // to the .then that ends up becoming a net promise and
-    //  so I can make another .then
+    // so I can make another .then
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
     .then( res => res.json() )
     .then( states => {
