@@ -25,10 +25,8 @@ server.get("/create-point", (req, res) => {
 })
 
 server.get("/search", (req, res) => {
-    return res.render("search-result.html")
+    return res.render("search-results.html")
 })
 
 // Connecting server
 server.listen(3000)
-
-// 01:11:35

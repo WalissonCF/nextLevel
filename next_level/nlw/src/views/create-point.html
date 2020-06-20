@@ -1,89 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Create a collection collect</title>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/styles/main.css">
-        <link rel="stylesheet" href="/styles/create-point.css">
-        <link rel="stylesheet" href="/styles/responsive.css">
-    </head>
-    <body>
-        <div id="page-create-point">
-            {% include "partials/page-header.html" %}
-                <form action="">
-                    <h1>Collection point register</h1>
-                    <fieldset>
-                        <legend>
-                            <h2>Entity data</h2>
-                        </legend>
-                        <div class="field">
-                            <label for="name">Entity name</label>
-                            <input type="text" name="name" required>
-                        </div>
-                        <div class="field-group">
-                            <div class="field">
-                                <label for="address">Address</label>
-                                <input type="text" name="address" required>
-                            </div>
-                            <div class="field">
-                                <label for="address2">Number/Complement</label>
-                                <input type="text" name="address2" required>
-                            </div>
-                        </div>
-                        <div class="field-group">
-                            <div class="field">
-                                <label for="state">State</label>
-                                <select name="uf" required>
-                                    <option value="">Select the state</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label for="city">City</label>
-                                <select name="city" disabled required>
-                                    <option value="">Select the city</option>
-                                </select>
-                                <input type="hidden" name="state">
-                            </div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>
-                            <h2>Collection items</h2>
-                        </legend>
-                        <div class="items-grid">
-                            <li data-id="1">
-                                <img src="/assets/lampadas.svg" alt="Lamps">
-                                <span>Lamps</span>
-                            </li>
-                            <li data-id="2">
-                                <img src="/assets/baterias.svg" alt="Batteries">
-                                <span>Batteries</span>
-                            </li>
-                            <li data-id="3">
-                                <img src="/assets/papeis-papelao.svg" alt="Papers and cardboard">
-                                <span>Papers and cardboard</span>
-                            </li>
-                            <li data-id="4">
-                                <img src="/assets/eletronicos.svg" alt="Electronic waste">
-                                <span>Electronic waste</span>
-                            </li>
-                            <li data-id="5">
-                                <img src="/assets/organicos.svg" alt="Organic waste">
-                                <span>Organic waste</span>
-                            </li>
-                            <li data-id="6">
-                                <img src="/assets/oleo.svg" alt="Kitchen oil">
-                                <span>Kitchen oil</span>
-                            </li>
-                        </div>
-                        <!-- For every time I click on the icons I will add it to this input-->
-                        <input type="hidden" name="items">
-                    </fieldset>
-                    <button type="submit">Register collection point</button>
-                </form> 
-        </div>
-        <script src="/scripts/create-point.js"></script>
-    </body>
-</html>
+{% extends "layout.html" %}
+
+{# Variable #}
+{% set pageId = "page-create-point" %}
+
+{% block title %}
+    <title>Create a collection collect</title>
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/styles/create-point.css">
+{% endblock styles %}
+
+{% block content %}
+    {% include "partials/page-header.html" %}
+    <form action="">
+        <h1>Collection point register</h1>
+        <fieldset>
+            <legend>
+                <h2>Entity data</h2>
+            </legend>
+            <div class="field-group">
+                <div class="field">
+                    <label for="name">Entity name</label>
+                    <input type="text" name="name" required="required">
+                </div>
+                <div class="field">
+                    <label for="name">Entity image</label>
+                    <input type="url" name="image" placeholder="http://" required="required">
+                </div>
+            </div>
+            <div class="field">
+                <label for="name">Entity name</label>
+                <input type="text" name="name" required="required">
+            </div>
+            <div class="field-group">
+                <div class="field">
+                    <label for="address">Address</label>
+                    <input type="text" name="address" required="required">
+                </div>
+                <div class="field">
+                    <label for="address2">Number/Complement</label>
+                    <input type="text" name="address2" required="required">
+                </div>
+            </div>
+            <div class="field-group">
+                <div class="field">
+                    <label for="state">State</label>
+                    <select name="uf" required="required">
+                        <option value="">Select the state</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="city">City</label>
+                    <select name="city" disabled="disabled" required="required">
+                        <option value="">Select the city</option>
+                    </select>
+                    <input type="hidden" name="state">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>
+                <h2>Collection items</h2>
+                <span>Select one or more items below</span>
+            </legend>
+            <div class="items-grid">
+                <li data-id="1">
+                    <img src="/assets/lampadas.svg" alt="Lamps">
+                    <span>Lamps</span>
+                </li>
+                <li data-id="2">
+                    <img src="/assets/baterias.svg" alt="Batteries">
+                    <span>Batteries</span>
+                </li>
+                <li data-id="3">
+                    <img src="/assets/papeis-papelao.svg" alt="Papers and cardboard">
+                    <span>Papers and cardboard</span>
+                </li>
+                <li data-id="4">
+                    <img src="/assets/eletronicos.svg" alt="Electronic waste">
+                    <span>Electronic waste</span>
+                </li>
+                <li data-id="5">
+                    <img src="/assets/organicos.svg" alt="Organic waste">
+                    <span>Organic waste</span>
+                </li>
+                <li data-id="6">
+                    <img src="/assets/oleo.svg" alt="Kitchen oil">
+                    <span>Kitchen oil</span>
+                </li>
+            </div>
+            <!-- For every time I click on the icons I will add it to this input-->
+            <input type="hidden" name="items">
+        </fieldset>
+        <button type="submit">Register collection point</button>
+    </form>
+{% endblock content %}}
+
+{% block scripts %}
+    <script src="/scripts/create-point.js"></script>
+{% endblock scripts %}
